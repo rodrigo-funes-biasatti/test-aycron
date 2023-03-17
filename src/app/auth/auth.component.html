@@ -1,0 +1,18 @@
+<div class="card-login">
+    <mat-card>
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="formLogin">
+                <mat-form-field>
+                    <input formControlName="username" matInput placeholder="User">
+                </mat-form-field>
+                <mat-form-field>
+                    <input formControlName="password" matInput placeholder="Password" type="password">
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button (click)="login()" mat-button>LOG IN</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
