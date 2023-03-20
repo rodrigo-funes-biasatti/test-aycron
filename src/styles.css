@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+.items-center-screen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 10px;
+}
+
+.grid-items {
+    grid-column: 1 / -1;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+h1.center-title{
+    text-align: center;
+    font-size: xx-large;
+}

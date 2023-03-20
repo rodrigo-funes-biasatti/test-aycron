@@ -1,6 +1,18 @@
-<p>
-  <mat-toolbar color="primary">
-    <span>Test Aycron</span>
-  </mat-toolbar>
-</p>
-<router-outlet></router-outlet>
+<div class="wrapper">
+  <!-- SPINNER -->
+  <div class="overlay" *ngIf="this.spinnerService.visibility | async">
+    <div class="spinner-wrapper">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+  <p>
+    <mat-toolbar color="primary">
+      <span>Test Aycron</span>
+      <span class="example-spacer"></span>
+      <button *ngIf="isLoggedIn()" mat-icon-button (click)="logout()" class="logout" aria-label="Logout">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,9 @@
+(17/03/2023)
+    -Create proyect, scaffolding: 1hs
+    -Create modules Auth & Home: 1hs
+    -Auth service: 2hs
+    -Create table: 1hs
+
+(18/03/1997)
+    -Configure firebase: 2hs
+    

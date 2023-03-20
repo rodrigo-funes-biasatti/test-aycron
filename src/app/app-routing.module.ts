@@ -11,7 +11,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home', component: HomeComponent, canActivate: [AuthguardGuard]
+    path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule), canActivate: [AuthguardGuard]
   },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
 ];

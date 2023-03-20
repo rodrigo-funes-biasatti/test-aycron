@@ -1,0 +1,12 @@
+section .width {
+    width: 100%;
+}
+
+button {
+    margin: 20px;
+}
+
+section.actions {
+    display: flex;
+    justify-content: center;
+}
