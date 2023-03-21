@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/services/auth.service';
 import { SpinnerService } from './shared/service/spinner.service';
 
@@ -7,17 +7,17 @@ import { SpinnerService } from './shared/service/spinner.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService, public spinnerService: SpinnerService) { }
+  constructor(public authService: AuthService, public spinnerService: SpinnerService) { }
+  
+  ngOnInit(): void {
+  }
 
   title = 'test-aycron';
 
-  logout(): void {
+  logout(): void { 
     this.authService.logout();
   }
 
-  isLoggedIn() {
-    return this.authService.isLoggedIn;
-  }
 }

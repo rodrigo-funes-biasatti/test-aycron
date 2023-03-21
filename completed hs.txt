@@ -1,0 +1,21 @@
+(17/03/2023)
+    -Create proyect, scaffolding: 0.5hs
+    -Create modules Auth & Home: 1hs
+    -Auth service: 2hs
+    -Create table: 1hs
+
+(18/03/2023)
+    -Configure firebase: 1hs
+    -Connect table with db: 0.5hs
+    -Make modal: 1hs
+
+(20/03/2023)
+    -Connect modal with firebase: 1hs
+    -Fix some bugs: 0.5hs
+
+(21/03/2023)
+    -
+
+COMPLETED: 8.5hs (18/03/2023)
+ESTIMATED: 15.5hs
+

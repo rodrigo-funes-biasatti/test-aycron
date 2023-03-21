@@ -15,8 +15,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class HttpCustomInterceptor implements HttpInterceptor {
 
   constructor(private spinnerService: SpinnerService,
-    private snackbarService: SnackbarService,
-    private authService: AuthService) { }
+    private snackbarService: SnackbarService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.spinnerService.show();

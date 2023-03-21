@@ -4,5 +4,6 @@ export interface Warehouse {
     address: string,
     state: string,
     county: string,
-    zip: string
+    zip: string,
+    list_products: string[]
 }

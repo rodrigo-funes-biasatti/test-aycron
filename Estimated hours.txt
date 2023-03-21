@@ -1,0 +1,13 @@
+Estimate:
+	-Create project & scaffolding: 2hs.
+	-Login/Logout: 1.5hs.
+	-Roles and grants: 1.5hs.
+	-Warehouses grid: 2hs.
+	-Configure/Connection with firebase: 1hs.
+	-Form with upload button: 2hs.
+	-Save button, update table and validates: 1.5hs.
+	-Nearest warehouse calculation (map + shortest route): 4hs
+	
+TOTAL: 15.5hs
+
+Deadline: 23/03/2023

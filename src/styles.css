@@ -18,3 +18,13 @@ h1.center-title{
     text-align: center;
     font-size: xx-large;
 }
+
+.error-snackbar {
+    background-color: rgb(255, 96, 96);
+    color: white;
+}
+
+.blue-snackbar {
+    background-color: rgb(73, 173, 79);
+    color:white
+}

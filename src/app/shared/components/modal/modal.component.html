@@ -1,20 +1,43 @@
 <h1 mat-dialog-title>New Warehouse</h1>
-<div mat-dialog-content class="modal-content" [formGroup]="form">
+<form mat-dialog-content class="modal-content" [formGroup]="form">
+    <div class="list_products-container">
+        <button #upload mat-flat-button color="primary" (click)="$event.preventDefault(); file.click();">
+            <mat-icon>add</mat-icon>
+            Selection List
+        </button>
+        <mat-hint *ngIf="form.controls['list_products']">{{productFilename}}</mat-hint>
+        <input #file accept=".txt" type="file" (change)="onFileChange($event)" formControlName="list_products">
+    </div>
     <mat-form-field appearance="fill">
         <mat-label>Code</mat-label>
         <input formControlName="code" matInput>
+        <mat-error *ngIf="form.controls['code'].hasError && form.controls['code'].hasError('required')">
+            Code is required.
+        </mat-error>
+        <mat-error *ngIf="form.controls['code'].hasError && form.controls['code'].hasError('pattern')">
+            Only numbers.
+        </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
         <input formControlName="name" matInput>
+        <mat-error *ngIf="form.controls['name'].hasError && form.controls['name'].hasError('required')">
+            Name is required.
+        </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Address</mat-label>
         <input formControlName="address" matInput>
+        <mat-error *ngIf="form.controls['address'].hasError && form.controls['address'].hasError('required')">
+            Address is required.
+        </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>State</mat-label>
         <input formControlName="state" matInput>
+        <mat-error *ngIf="form.controls['state'].hasError && form.controls['state'].hasError('required')">
+            State is required.
+        </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>County</mat-label>
@@ -24,7 +47,7 @@
         <mat-label>Zip</mat-label>
         <input formControlName="zip" matInput>
     </mat-form-field>
-</div>
+</form>
 <div mat-dialog-actions>
     <button mat-button (click)="save()">Save</button>
     <button mat-button mat-dialog-close (click)="cancel()">Cancelar</button>

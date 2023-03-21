@@ -13,7 +13,8 @@ export const environment = {
     storageBucket: "test-aycron.appspot.com",
     messagingSenderId: "662257872930",
     appId: "1:662257872930:web:66732a48f22ee3c42d9a7b"
-  }
+  },
+  mapsAPIKey: 'AIzaSyBfhxXxDonFDjvxL5Jxv43LfqKr4omnSBA',
 };
 
 /*

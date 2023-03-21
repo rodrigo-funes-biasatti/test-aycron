@@ -8,8 +8,8 @@
   <p>
     <mat-toolbar color="primary">
       <span>Test Aycron</span>
-      <span class="example-spacer"></span>
-      <button *ngIf="isLoggedIn()" mat-icon-button (click)="logout()" class="logout" aria-label="Logout">
+      <span style="margin-right: 5%">User: {{authService.getUserLogged() ? authService.getUserLogged()!.username : 'visitor'}}</span>
+      <button *ngIf="authService.loggedIn()" mat-icon-button (click)="logout()" class="logout" aria-label="Logout">
         <mat-icon>logout</mat-icon>
       </button>
     </mat-toolbar>

@@ -1,3 +1,17 @@
-div.modal-content {
+form.modal-content {
     display: grid;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+div.list_products-container {
+    margin-bottom: 10px;
+    display: grid;
+    justify-content: center;
+}
+
+div.list_products-container mat-hint {
+    font-size: xx-small;
 }
