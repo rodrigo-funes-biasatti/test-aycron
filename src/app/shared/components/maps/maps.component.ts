@@ -18,9 +18,10 @@ export class MapsComponent implements OnInit {
   map!: google.maps.Map;
   warehouses: Warehouse[] = [];
   nearestWarehouses: WarehouseDirectionsResult[] = [];
+  directionsRenderer!: google.maps.DirectionsRenderer;
 
-  constructor(private route: ActivatedRoute, 
-    private mapsService: MapsService, 
+  constructor(private route: ActivatedRoute,
+    private mapsService: MapsService,
     private spinnerService: SpinnerService,
     private snackbarService: SnackbarService) { }
 
@@ -34,7 +35,11 @@ export class MapsComponent implements OnInit {
 
     this.route.data.subscribe((data) => {
       this.warehouses = data['warehouses'];
-    })
+    });
+
+    this.directionsRenderer = new google.maps.DirectionsRenderer({
+      map: this.map
+    });
   }
 
   public async search(searchDirection = 'Bartolomé de las Casas 3770, Córdoba Capital') {
@@ -51,15 +56,33 @@ export class MapsComponent implements OnInit {
 
     this.mapsService.calculateAllDirections(requests).then(directions => {
       const sortedDirections = this.mapsService.getNearestWarehouses(directions);
-      console.log({sortedDirections});
       this.nearestWarehouses = sortedDirections;
+      this.setMarkers();
     })
-    .catch(error => {
-      this.snackbarService.openSnackBarError(`Error calculating directions: ${error}`, 'OK');
-    }).finally(() => {
-      this.spinnerService.hide();
-    })
+      .catch(error => {
+        this.snackbarService.openSnackBarError(`Error calculating directions: ${error}`, 'OK');
+      }).finally(() => {
+        this.spinnerService.hide();
+      })
+  }
 
+  async setMarkers() {
+    const warehouses = this.nearestWarehouses.map(nw => {
+      return nw.warehouse;
+    })
+    const markers = await this.mapsService.getMarkers(warehouses, this.map);
+    markers.forEach(marker => {
+      new google.maps.Marker({
+        position: marker.getPosition()!,
+        map: this.map,
+        title: marker.getTitle()!,
+      })
+    })
+    console.log({ markers });
+  }
+
+  async renderDirections(directionResult: google.maps.DirectionsResult) {
+    this.directionsRenderer.setDirections(directionResult);
   }
 
 }

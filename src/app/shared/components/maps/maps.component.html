@@ -1,7 +1,7 @@
 <div #map id="map" style="width:1000px; height:400px"></div>
-<section>
+<section *ngIf="nearestWarehouses.length">
     <h2>Warehouses: </h2>
     <ng-container *ngFor="let ws of nearestWarehouses">
-        <button mat-raised-button>{{ ws.warehouse.name }}</button>
+        <button (click)="renderDirections(ws.directionResult)" mat-raised-button>{{ ws.warehouse.name }} : {{(ws.distance / 1000).toFixed(2)}}km</button>
     </ng-container>
 </section>

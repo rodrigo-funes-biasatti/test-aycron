@@ -10,3 +10,8 @@ export interface WarehouseDirectionsResult {
     directionResult: google.maps.DirectionsResult,
     distance: number
 }
+
+export interface MarkerResult {
+    location: google.maps.LatLngLiteral,
+    ws_name: string
+}

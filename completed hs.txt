@@ -18,7 +18,9 @@
     -Create NWC (Nearest Warehouses calculation) module (routes, guard, components): 1hs
     -Configure and implements Google Maps API: 1hs.
 
+(22/03/2023)
+    -Implements distance calculation to Google API: 4hs
 
-COMPLETED: 8.5hs (20/03/2023)
+COMPLETED: 12.5hs (22/03/2023)
 ESTIMATED: 15.5hs
 
