@@ -14,8 +14,11 @@
     -Fix some bugs: 0.5hs
 
 (21/03/2023)
-    -
+    -Fix some bugs: 0.5hs
+    -Create NWC (Nearest Warehouses calculation) module (routes, guard, components): 1hs
+    -Configure and implements Google Maps API: 1hs.
 
-COMPLETED: 8.5hs (18/03/2023)
+
+COMPLETED: 8.5hs (20/03/2023)
 ESTIMATED: 15.5hs
 

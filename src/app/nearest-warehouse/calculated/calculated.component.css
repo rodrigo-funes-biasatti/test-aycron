@@ -1,0 +1,9 @@
+section {
+    display: grid;
+    justify-content: center;
+    margin: 10px;
+}
+
+mat-form-field {
+    width: 100%;
+}

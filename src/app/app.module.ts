@@ -28,6 +28,7 @@ import { environment } from 'src/environments/environment';
     AngularFireStorageModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

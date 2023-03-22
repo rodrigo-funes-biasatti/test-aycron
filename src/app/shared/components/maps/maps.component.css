@@ -1,0 +1,13 @@
+section {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+h2 {
+     margin: 0;
+}
+
+button {
+    margin: 0 10px;
+}

@@ -1,0 +1,7 @@
+<div #map id="map" style="width:1000px; height:400px"></div>
+<section>
+    <h2>Warehouses: </h2>
+    <ng-container *ngFor="let ws of nearestWarehouses">
+        <button mat-raised-button>{{ ws.warehouse.name }}</button>
+    </ng-container>
+</section>

@@ -13,12 +13,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent } from './components/modal/modal.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MapsComponent } from './components/maps/maps.component';
 
 
 @NgModule({
   declarations: [
     TableComponent,
-    ModalComponent
+    ModalComponent,
+    MapsComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +45,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatIconModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MapsComponent
   ]
 })
 export class SharedModule { }

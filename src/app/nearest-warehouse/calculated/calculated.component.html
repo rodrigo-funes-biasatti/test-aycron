@@ -1,0 +1,18 @@
+<section>
+    <h1>Nearest Warehouse Calculation</h1>
+    <form mat-dialog-content class="modal-content" [formGroup]="form">
+        <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <input formControlName="address" matInput>
+            <mat-error *ngIf="form.controls['address'].hasError && form.controls['address'].hasError('required')">
+                Address is required.
+            </mat-error>
+        </mat-form-field>
+        <div mat-dialog-actions>
+            <button color="primary" mat-raised-button (click)="ejecutar()">Search</button>
+        </div>
+    </form>
+</section>
+<section>
+    <app-maps></app-maps>
+</section>
