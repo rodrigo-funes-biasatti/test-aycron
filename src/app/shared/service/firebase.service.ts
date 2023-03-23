@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument, DocumentReference } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreDocument, DocumentData, DocumentReference, QuerySnapshot } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
 
@@ -24,5 +24,16 @@ export class FirebaseService {
 
   getDocumentByProp<T>(collectionName: string, prop: string, propValue: any): Observable<T[]> {
     return this.firestore.collection<T>(collectionName, ref => ref.where(prop, '==', propValue)).valueChanges();
+  }
+
+  deleteDocument(collectionName: string, prop: string, propValue: any): void {
+    this.firestore
+      .collection(collectionName, ref => ref.where(prop, '==', propValue))
+      .get()
+      .subscribe((querySnapshot) => {
+        querySnapshot.forEach(doc => {
+          doc.ref.delete();
+        });
+      });
   }
 }

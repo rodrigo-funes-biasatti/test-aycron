@@ -25,4 +25,8 @@ export class WarehousesService {
   saveWarehouse(warehouse: Warehouse): Promise<DocumentReference<Warehouse>> {
     return this.firebaseService.addDocument(this.WAREHOUSES, warehouse);
   }
+
+  deleteWarehouse(code: number): void {
+    this.firebaseService.deleteDocument(this.WAREHOUSES, 'code', code);
+  }
 }
