@@ -48,32 +48,4 @@ export class MapsService {
     return nearestDirections;
   }
 
-  async getMarkers(warehouse: Warehouse[], map: google.maps.Map) {
-    const markers: google.maps.Marker[] = []
-    const promises = warehouse.map(ws => {
-      let location: google.maps.LatLngLiteral;
-      return new Promise<MarkerResult>((resolve, reject) => {
-        this.geocoder.geocode({ address: ws.address }, (results, status) => {
-          if (status == google.maps.GeocoderStatus.OK) {
-            location = results[0].geometry.location.toJSON() as google.maps.LatLngLiteral;
-            console.log({location});
-            resolve({ location: location, ws_name: ws.name });
-          }
-          else {
-            reject(`Geocode failed: ${status}`);
-          }
-        })
-      })
-    })
-
-    const results = await Promise.all(promises);
-    results.forEach((value: MarkerResult) => {
-      const marker = new google.maps.Marker({ position: value.location, map: map, title: value.ws_name });
-      console.log({marker})
-      markers.push(marker);
-    });
-
-    return markers;
-  }
-
 }

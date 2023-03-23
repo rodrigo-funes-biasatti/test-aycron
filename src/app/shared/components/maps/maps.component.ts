@@ -57,28 +57,12 @@ export class MapsComponent implements OnInit {
     this.mapsService.calculateAllDirections(requests).then(directions => {
       const sortedDirections = this.mapsService.getNearestWarehouses(directions);
       this.nearestWarehouses = sortedDirections;
-      this.setMarkers();
     })
       .catch(error => {
         this.snackbarService.openSnackBarError(`Error calculating directions: ${error}`, 'OK');
       }).finally(() => {
         this.spinnerService.hide();
       })
-  }
-
-  async setMarkers() {
-    const warehouses = this.nearestWarehouses.map(nw => {
-      return nw.warehouse;
-    })
-    const markers = await this.mapsService.getMarkers(warehouses, this.map);
-    markers.forEach(marker => {
-      new google.maps.Marker({
-        position: marker.getPosition()!,
-        map: this.map,
-        title: marker.getTitle()!,
-      })
-    })
-    console.log({ markers });
   }
 
   async renderDirections(directionResult: google.maps.DirectionsResult) {

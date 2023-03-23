@@ -25,7 +25,7 @@ export class TableComponent implements OnInit {
   displayedColumns: string[] = ['code', 'name', 'address', 'state', 'county', 'zip', 'actions'];
 
   download(warehouse: Warehouse) {
-    this.warehousesService.getWarehouseByCode(+warehouse.code).subscribe((prods: Warehouse[]) => {
+    this.warehousesService.getWarehouseByCode(warehouse.code).subscribe((prods: Warehouse[]) => {
       const products = prods[0].list_products;
       if (!products) {
         this.snackbarService.openSnackBarError("Warehouse hasn't list products", 'Ok');
