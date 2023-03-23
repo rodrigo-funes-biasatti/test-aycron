@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Warehouse } from '../../interfaces/warehoust.const';
 import { WarehousesService } from 'src/app/home/services/warehouses.service';
-import { FirebaseService } from '../../service/firebase.service';
 import { saveAs } from 'file-saver';
 import { SnackbarService } from '../../service/snackbar.service';
 
@@ -15,7 +14,6 @@ export class TableComponent implements OnInit {
   data: Warehouse[] = [];
 
   constructor(private warehousesService: WarehousesService, 
-    private firebaseService: FirebaseService,
     private snackbarService: SnackbarService) { }
 
   ngOnInit(): void {

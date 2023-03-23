@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { fileProducts } from '../../utils/products.reader';
 import { SnackbarService } from '../../service/snackbar.service';
+import { Warehouse } from '../../interfaces/warehoust.const';
+import { WarehousesService } from 'src/app/home/services/warehouses.service';
 
 @Component({
   selector: 'app-modal',
@@ -13,10 +15,12 @@ export class ModalComponent implements OnInit {
 
   form!: FormGroup;
   productFilename: string = "";
+  data: Warehouse[] = [];
 
   constructor(private formBuilder: FormBuilder, 
     public diagloRef: MatDialogRef<ModalComponent>,
-    private snackbarService: SnackbarService) { }
+    private snackbarService: SnackbarService,
+    private warehousesService: WarehousesService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -27,16 +31,27 @@ export class ModalComponent implements OnInit {
       state: [null, Validators.required],
       county: [null],
       zip: [null],
+    });
+
+    this.warehousesService.getWarehouses().subscribe(whs => {
+      this.data = whs;
     })
   }
 
   save(): void {
+    if (this.existsWarehouse(+this.form.controls['code'].value)) {
+      this.snackbarService.openSnackBarError('The warehouse you are traying to save already exists.', 'OK');
+      return;
+    }
     if (this.form.valid) {
       this.diagloRef.close(this.form.value);
       return;
     }
-    console.log(this.form.value);
     this.snackbarService.openSnackBarError('Form has errors', 'Ok');
+  }
+
+  existsWarehouse(code: number) {
+    return this.data.some(warehouse => +warehouse.code === code);
   }
 
   cancel(): void {
